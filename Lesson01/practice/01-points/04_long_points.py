@@ -7,8 +7,7 @@ class Point:
         self.y = y
 
     def dist_to(self, other_point: Point) -> float:
-        # TODO-0: скопируйте реализацию из предыдущей задачи
-        ...
+
 
 
 # Дан список из произвольного количества точек:
