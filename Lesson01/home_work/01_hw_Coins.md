@@ -16,8 +16,22 @@ class Coin:
         self.side = None
 
     def flip(self) -> None:
-        """
-        Подбрасывание монетки. # heads-орел/tails-решка
-        """
-        self.side = ...  # random: heads/tails
-```
+        self.side = random.choice(["heads", "tails"])
+        # random: heads/tails
+
+
+n = int(input("Количество монеток : "))
+coins = []
+for coin in range(n):
+    coins.append(Coin())
+    coins[coin].flip()
+
+for coin in coins:
+    heads_coin = sum(1 for coin in coins if coin.side == "heads")
+    tails_coin = len(coins) - heads_coin
+
+total = len(coins)
+heads = heads_coin / total
+tails = tails_coin / total
+print("ОРЁЛ -----------------Решка")
+print(f' {heads}, <<----->> {tails}"')
