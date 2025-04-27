@@ -45,3 +45,52 @@ car1.ride(50)  # едем 50 км (если хватит топлива)
 
 **Важно**: тщательно протестируйте вашу реализацию!
 
+class Car:
+    def __init__(self, capacity, gas_per_km, gas=0):
+        self.gas = gas  # сколько бензина в баке
+        self.capacity = capacity  # вместимость бака
+        self.gas_per_km = gas_per_km  # расход топлива на **один** километр
+        self.mileage = 0
+
+    def fill(self, liters):
+        if self.gas + liters <= self.capacity:
+            self.gas = self.gas + liters
+
+        else:
+            excess = (self.gas + liters) - self.capacity
+            self.gas = self.capacity
+            print(f" Лишние литры: {excess}! ")
+
+    def ride(self, km):
+        possible_km = self.gas / self.gas_per_km
+
+        if possible_km >= km:
+            self.gas = self.gas - km * self.gas_per_km
+            self.mileage = self.mileage + km
+        else:
+            self.mileage = self.mileage + possible_km
+            self.gas = 0
+            print(f"Проехал только : {possible_km} ")
+
+
+# Тестирование
+car = Car(50, 0.1)  # бак на 50л, расход 0.1л/км
+print(f"Начальное состояние: Бак={car.gas}, проехал={car.mileage} км")
+
+# Заливаем 30 литров
+car.fill(30)
+print(f"Заливаем 30 литров: Бак={car.gas}")
+
+# Пытаемся залить еще 25 литров (должно остаться 5 лишних)
+car.fill(25)
+print(f"Заливаем 25 литров : Бак={car.gas} ")
+
+#  200 км
+car.ride(200)
+print(f"После поездки 200 км: Бак={car.gas}, проехал={car.mileage} км")
+
+# еще 100 км (бензин должен закончиться)
+car.ride(100)  # Выведет сообщение о том, что бензин закончился
+print(f"После поездки 100 км: Бак={car.gas}, проехал={car.mileage} км,  ")
+
+
