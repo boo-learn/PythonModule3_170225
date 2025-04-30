@@ -33,21 +33,22 @@ class Money:
         return f"{rub}руб {kop}коп"
 
 
-# Создаем две денежные суммы
-money_sum1 = Money(20, 60)  # 2060
-money_sum2 = Money(30, 40)  # 1090
+if __name__ == "__main__":
+    # Создаем две денежные суммы
+    money_sum1 = Money(20, 60)  # 2060
+    money_sum2 = Money(30, 40)  # 1090
 
-money_sum3 = money_sum1 + money_sum2 # -> money_sum1.__add__(money_sum1)
-money_sum4 = money_sum1 - money_sum2  # -> money_sum1.__sub__(money_sum1)
+    money_sum3 = money_sum1 + money_sum2 # -> money_sum1.__add__(money_sum1)
+    money_sum4 = money_sum1 - money_sum2  # -> money_sum1.__sub__(money_sum1)
 
-money_sum5 = money_sum1 * 5 # money_sum1.__mul__(5)
+    money_sum5 = money_sum1 * 5 # money_sum1.__mul__(5)
 
-print(money_sum1)
-print(money_sum2)
-print(money_sum3)
-print(money_sum4)
-print(money_sum5)
+    print(money_sum1)
+    print(money_sum2)
+    print(money_sum3)
+    print(money_sum4)
+    print(money_sum5)
 
-# Складываем суммы
-# money_result = money_sum1 + money_sum2
-# print(money_result)  # 31руб 5коп
+    # Складываем суммы
+    # money_result = money_sum1 + money_sum2
+    # print(money_result)  # 31руб 5коп
