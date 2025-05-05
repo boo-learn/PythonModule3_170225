@@ -88,8 +88,8 @@ class Account:
         """
         self.withdraw(amount, to_history=False)
         target_account.deposit(amount, to_history=False)
-        operation_my = Operation(amount, Operation.TRANSFER_OUT, target_account=target_account)
-        operation_target = Operation(amount, Operation.TRANSFER_IN, target_account=self)
+        operation_my = Operation(Operation.TRANSFER_OUT, amount, target_account=target_account, )
+        operation_target = Operation(Operation.TRANSFER_IN, amount, target_account=self)
         self.__history.append(operation_my)
         target_account.__history.append(operation_target)
 
