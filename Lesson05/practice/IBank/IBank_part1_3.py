@@ -39,15 +39,14 @@ class Account:
 
         self.__balance -= amount
 
-    # TODO-1: напишите реализацию метода transfer()
     def transfer(self, target_account: 'Account', amount: int) -> None:
         """
         Перевод денег на счет другого клиента
         :param target_account: счет клиента для перевода
         :param amount: сумма перевода
-        :return:
         """
-        pass
+        self.withdraw(amount)
+        target_account.deposit(amount)
 
 
 if __name__ == "__main__":
