@@ -1,6 +1,21 @@
+import random
+
 class Dice:
-    # Тут будет код игрального шестигранного кубика
-    pass
+    def __init__(self, sides=6):
+        if sides not in [4, 6, 12, 20]:
+            raise ValueError("Некорректное количество граней")
+        self.__sides = sides
+
+    @property
+    def sides(self):
+        return self.__sides
+
+    def roll(self) -> int:
+        return random.randint(1, self.__sides)
+
+dice6 = Dice()
+print(dice6.sides)
+
 
 # TODO-1: Найти некорректные значение, которые можно записать в атрибут .side и исправьте
 

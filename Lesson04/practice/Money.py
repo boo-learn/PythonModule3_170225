@@ -13,7 +13,7 @@ class Money:
     def __mul__(self, other):
         return Money(0, self.kop * other)
 
-    def normalize(self):
+    def __normalize(self):
         has_minus = False
         if self.kop < 0:
             self.kop *= -1
@@ -29,7 +29,7 @@ class Money:
         return rub, kop
 
     def __str__(self):
-        rub, kop = self.normalize()
+        rub, kop = self.__normalize()
         return f"{rub}руб {kop}коп"
 
 
@@ -42,6 +42,7 @@ if __name__ == "__main__":
     money_sum4 = money_sum1 - money_sum2  # -> money_sum1.__sub__(money_sum1)
 
     money_sum5 = money_sum1 * 5 # money_sum1.__mul__(5)
+
 
     print(money_sum1)
     print(money_sum2)

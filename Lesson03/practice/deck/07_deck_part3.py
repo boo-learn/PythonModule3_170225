@@ -3,30 +3,30 @@ import random
 
 class Card:
     def __init__(self, value, suit):
-        self.value = value  # Значение карты(2, 3... 10, J, Q, K, A)
-        self.suit = suit  # Масть карты
+        self.__value = value  # Значение карты(2, 3... 10, J, Q, K, A)
+        self.__suit = suit  # Масть карты
 
-    def __str__(self):
+    def __repr__(self):
         icons = {
             "Diamonds": '\u2666',
             "Hearts": "\u2665",
             "Spades": '\u2660',
             "Clubs": '\u2663'
         }
-        return f"{self.value}{icons[self.suit]}"
+        return f"{self.__value}{icons[self.__suit]}"
 
     def equal_suit(self, other_card):
-        return self.suit == other_card.suit
+        return self.__suit == other_card.suit
 
     def __gt__(self, other_card):
-        index_value_card1 = Deck.values.index(self.value)
+        index_value_card1 = Deck.values.index(self.__value)
         index_value_card2 = Deck.values.index(other_card.value)
         if index_value_card1 > index_value_card2:
             return True
         elif index_value_card1 < index_value_card2:
             return False
         else:  # Значения карт равны
-            index_suit_card1 = Deck.suits.index(self.suit)
+            index_suit_card1 = Deck.suits.index(self.__suit)
             index_suit_card2 = Deck.suits.index(other_card.suit)
             return index_suit_card1 > index_suit_card2
 
@@ -77,19 +77,10 @@ deck = Deck()
 # Тусуем колоду
 deck.shuffle()
 
-print(deck)
-card1 = Card("Q", "Clubs")
-card2 = Card("J", "Diamonds")
-#
-if card1 > card2:
-    print(f"{card1} больше {card2}")
+hand = deck.draw(3)
 
-for card in deck:
-    print(card)
+print(deck)  # deck.__str__()
+print(hand)  # card.__repr__()
 
+my_list = [3, 4, 7, 10]
 
-# iterator = iter(deck)  # -> deck.__iter__()
-# print(next(iterator))  # -> iterator.__next__()
-# print(next(iterator))  # -> iterator.__next__()
-# print(next(iterator))  # -> iterator.__next__()
-# print(next(iterator))  # -> iterator.__next__()
