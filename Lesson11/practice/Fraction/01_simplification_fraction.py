@@ -1,7 +1,18 @@
 # Задание "Упрощение дроби"
+import re
 
 def simplificator(fraction):
-    pass
+    match = re.match(r"^(-?)(\d*)(?:\s*(\d+)/(\d+))?$", fraction.strip())
+
+    if not match:
+        return "Invalid fraction format"
+
+    sign_str = match.group(1)
+    whole_part_str = match.group(2)
+    numerator_str = match.group(3)
+    denominator_str = match.group(4)
+
+    return match.groups()
 
 # Простые дроби заданы в виде строки формата: целая_часть числитель/знаменатель
 # целая_часть может отсутствовать, числитель и знаменатель всегда присутствуют
@@ -14,9 +25,11 @@ fraction3 = "2/4"
 fraction4 = "-5/4"
 
 # TODO: Задание: Напишите функцию simplificator, которая возвращает дробь в упрощенном виде с выделением целой части
-simplificator("3 12/15")  # --> 3 4/5
-simplificator("-1 11/6")  # --> -2 5/6
-simplificator("2/4")  # --> 1/2
-simplificator("-5/4")  # --> -1 1/4
-
+print(simplificator("3 12/15"))  # --> 3 4/5
+print(simplificator("-1 11/6") ) # --> -2 5/6
+print(simplificator("2/4"))  # --> 1/2
+print(simplificator("-5/4"))  # --> -1 1/4
 # Подсказки: смотри файл helpers/lcmp_gcd.py
+
+# 13/7 -> 1 6/7
+# 12/8 -> 3/2 -> 1 1/2
